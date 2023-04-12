@@ -21,12 +21,33 @@ const Wrapper = styled.div`
     padding-top: 6.25rem;
     overflow: hidden;
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
-      url('https://pds.joongang.co.kr/news/component/joongang_sunday/202209/03/c9f999b5-d32d-4a06-bdfc-02aff4755ffb.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+      url('https://res.heraldm.com/content/image/2022/09/08/20220908000164_0.jpg');
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
   }
+`;
+
+const Slogan = styled.div`
+  .title {
+    font-size: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    color: white;
+  }
+
+  transition: all 0.3s ease-out;
+  color: #2b2d42;
+  border-radius: 1.25rem;
+  position: absolute;
+  z-index: 10;
+  left: 1.25rem;
+  padding: 1.25rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.6);
+  font-weight: lighter;
 `;
 
 const List = styled.ul`
@@ -38,6 +59,19 @@ const List = styled.ul`
     justify-content: space-around;
     align-items: stretch;
     flex-wrap: nowrap;
+  }
+`;
+
+const DummyItem = styled.li<{ display: string }>`
+  @media (max-width: 767px) {
+    display: ${(props) => props.display};
+    width: 18.75rem;
+    height: 20rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 18.75rem;
+    height: 100%;
   }
 `;
 
@@ -71,11 +105,6 @@ const Item = styled.li`
       img {
         transform: translateY(-25vh);
       }
-    }
-
-    :nth-child(1) {
-      width: 18.75rem;
-      height: 100%;
     }
 
     /* &:nth-child(2) {
@@ -115,14 +144,26 @@ const Item = styled.li`
 const Gallery = () => {
   const containRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<any>(null);
 
   useEffect(() => {
     const onScroll = () => {
-      if (scrollRef.current && containRef.current && wrapRef.current) {
+      if (
+        scrollRef.current &&
+        containRef.current &&
+        wrapRef.current &&
+        textRef.current
+      ) {
         let viewWidth = window.innerWidth;
         let galleryPosition = containRef.current.offsetTop;
         let scrollLocation = document.documentElement.scrollTop;
+
+        if (scrollLocation - galleryPosition >= 650) {
+          textRef.current.style.opacity = '0';
+        } else {
+          textRef.current.style.opacity = '1';
+        }
 
         if (
           viewWidth >= 768 &&
@@ -148,8 +189,28 @@ const Gallery = () => {
   return (
     <Container ref={containRef}>
       <Wrapper ref={wrapRef}>
+        <Slogan ref={textRef}>
+          <span className='title'>
+            여러분의
+            <br />
+            뉴진스가
+            <br />
+            <strong>사진속에</strong>
+          </span>
+          <br />
+          <br />
+
+          <span>
+            내가 올린 사진이 갤러리에
+            <br />
+            지금 그 다채로움을 경험해보세요.
+          </span>
+        </Slogan>
         <List ref={scrollRef}>
-          <Item />
+          <DummyItem display='block' />
+          <DummyItem display='none' />
+          <DummyItem display='none' />
+
           {photos.map((photo) => (
             <Item key={photo.id}>
               <img src={photo.src} alt='' />

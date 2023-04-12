@@ -174,7 +174,7 @@ const Header = () => {
       <SideMenu isMenu={isMenu} onMenuClick={onMenuClick} />
       <Wrapper>
         <Cat ref={catRef} />
-        <Title>GALLERY</Title>
+        <Title>GALLERIA</Title>
 
         <Icon ref={menuBtn} onClick={onMenuClick}>
           <FiMenu />

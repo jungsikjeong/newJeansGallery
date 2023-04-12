@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { IoMdClose } from 'react-icons/io';
 
 const Container = styled.nav<{ isMenu: boolean }>`
@@ -11,7 +10,8 @@ const Container = styled.nav<{ isMenu: boolean }>`
   bottom: 0;
   transform: ${({ isMenu }) =>
     isMenu ? `translateX(0)` : `translateX(-100%)`};
-  background-color: ${({ theme }) => theme.menuBgColor};
+  background-color: rgba(43, 45, 66, 0.8);
+  color: #f5f6fa;
   padding: 6rem 0rem;
   z-index: 1000;
   transition: all 0.3s ease;
@@ -27,7 +27,7 @@ const CloseBtn = styled.button`
   top: 1.875rem;
   left: 1.25rem;
   .close-icon {
-    color: ${({ theme }) => theme.textColor};
+    color: #f5f6fa;
     font-size: 2rem;
     transition: all 0.3s ease;
     cursor: pointer;

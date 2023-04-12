@@ -1,11 +1,13 @@
+import { useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
 import styled, { keyframes } from 'styled-components';
 import ReactPlayer from 'react-player';
 import mainVideoFile from '../assets/images/mainVideo.mp4';
 import newJeans01 from '../assets/images/newJeans1.gif';
 import InitialScreen from '../components/InitialScreen';
-import { useEffect, useState } from 'react';
 import Gallery from '../components/Gallery';
+import BestPhotos from '../components/BestPhotos';
+import ObserverViewport from '../hook/ObserverViewport';
 
 const moveUp = keyframes`
 0%{
@@ -28,6 +30,10 @@ const Container = styled.div`
   strong {
     font-weight: bold;
   }
+
+  .moveUp {
+    animation: ${moveUp} 2s 0s ease-in-out forwards;
+  }
 `;
 
 const VideoSection = styled.section`
@@ -47,6 +53,7 @@ const MainLogo = styled.div`
   bottom: 50px;
   font-size: 3rem;
   line-height: 1.2;
+  color: #f5f6fa;
   opacity: 0;
   transform: translateY(0);
   animation: ${moveUp} 2s 3.7s ease-in-out forwards;
@@ -68,6 +75,10 @@ const Section = styled.section<{
 `;
 
 const Wrapper = styled.div`
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
@@ -75,14 +86,17 @@ const Wrapper = styled.div`
   height: 100vh;
   margin: 0 auto;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
+  .left-box {
+    color: #f5f6fa;
+  }
+
+  .animation {
+    animation: ${moveUp} 2s 3.7s ease-in-out forwards;
   }
 
   p {
     line-height: 1.2;
-    color: ${({ theme }) => theme.textColor};
+    /* color: ${({ theme }) => theme.textColor}; */
   }
 
   .title {
@@ -203,13 +217,20 @@ const Article = styled.article`
 const Home = () => {
   const [screen, setScreen] = useState(false);
 
+  const ref = ObserverViewport();
+
   useEffect(() => {
+    // 새로고침시 스크롤 최상단이동
+    window.onbeforeunload = function pushRefresh() {
+      window.scrollTo(0, 0);
+    };
+
     setTimeout(() => {
       setScreen(true);
     }, 3000);
   }, []);
   return (
-    <Container style={{ height: '1000vh' }}>
+    <Container>
       {/* 초기 스크린 */}
       <InitialScreen />
 
@@ -237,7 +258,7 @@ const Home = () => {
 
           <Section backgroundColor={'#000'}>
             <Wrapper>
-              <div>
+              <div className='left-box' ref={ref}>
                 <p className='title'>시대의 아이콘</p>
                 <p className='text'>
                   매일 찾게 되고
@@ -286,6 +307,7 @@ const Home = () => {
                     </Article>
                   </a>
                 </NewsItem>
+
                 <NewsItem>
                   <a
                     href='https://entertain.naver.com/now/read?oid=108&aid=0003141611'
@@ -321,6 +343,8 @@ const Home = () => {
           </Section>
 
           <Gallery />
+
+          <BestPhotos />
         </>
       )}
     </Container>
