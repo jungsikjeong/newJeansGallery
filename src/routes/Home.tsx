@@ -24,6 +24,7 @@ const moveUp = keyframes`
 
 const Container = styled.div`
   overflow: hidden;
+
   strong {
     font-weight: bold;
   }

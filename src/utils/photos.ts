@@ -31,4 +31,12 @@ export const photos = [
     id: '7',
     src: 'https://thumb.mtstarnews.com/06/2022/12/2022121409561315598_1.jpg',
   },
+  {
+    id: '8',
+    src: 'https://pds.joongang.co.kr/news/component/joongang_sunday/202209/03/c9f999b5-d32d-4a06-bdfc-02aff4755ffb.jpg',
+  },
+  {
+    id: '9',
+    src: 'https://cdn.ize.co.kr/news/photo/202212/54748_65917_32.jpg',
+  },
 ];
