@@ -169,6 +169,7 @@ const Gallery = () => {
   const modal = useRecoilValue(modalState);
   const setModal = useSetRecoilState(modalState);
   const setContainRef = useSetRecoilState(galleryRef);
+  const setPhotos = useSetRecoilState(photosState);
 
   const onImageClick = (photo: any) => {
     setTargetImageInfo(photo);
@@ -176,9 +177,18 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    if (containRef.current) {
+    if (containRef) {
       setContainRef(containRef);
     }
+
+    if (localStorage.getItem('data')) {
+      const localDates = JSON.parse(localStorage.getItem('data') as any);
+
+      setPhotos((oldPhotos) => [...localDates, ...oldPhotos]);
+    }
+  }, []);
+
+  useEffect(() => {
     const onScroll = () => {
       if (
         scrollRef.current &&
@@ -250,8 +260,8 @@ const Gallery = () => {
           <DummyItem display='none' />
           <DummyItem display='none' />
 
-          {photos.map((photo) => (
-            <Item key={photo.id} onClick={() => onImageClick(photo)}>
+          {photos.map((photo, index) => (
+            <Item key={index} onClick={() => onImageClick(photo)}>
               <img src={photo.src} alt='' />
             </Item>
           ))}

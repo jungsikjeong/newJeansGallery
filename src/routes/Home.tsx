@@ -12,6 +12,7 @@ import NewAuthor from '../components/NewAuthor';
 import FileUpload from '../components/FileUpload/FileUpload';
 import CustomerVoice from '../components/CustomerVoice';
 import Footer from '../components/Footer';
+import { dateParse } from '../utils/date';
 
 const moveUp = keyframes`
 0%{
@@ -263,6 +264,7 @@ const Home = () => {
       setScreen(true);
     }, 3000);
   }, []);
+
   return (
     <Container>
       {/* 초기 스크린 */}

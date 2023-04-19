@@ -5,6 +5,7 @@ import defaultImage from '../../assets/images/default.png';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { galleryRef, photosState } from '../../atoms';
 import { Link } from 'react-scroll';
+import { dateParse } from '../../utils/date';
 
 const Container = styled.div`
   width: 100%;
@@ -143,17 +144,20 @@ const FileUploadForm = () => {
         title: title,
         contents: textBody,
         src: image.src,
-        date: String(Date.now()),
+        date: String(dateParse()),
       };
+      const localDates = JSON.parse(localStorage.getItem('data') as any);
+      localDates
+        ? localStorage.setItem('data', JSON.stringify([body, ...localDates]))
+        : localStorage.setItem('data', JSON.stringify([body]));
 
-      localStorage.setItem('data', JSON.stringify(body));
       setPhotos((oldPhotos) => [body, ...oldPhotos]);
 
       setTitle('');
       setTextBody('');
       setImage({ name: '', src: '' });
       if (window.confirm('공유가 완료되었습니다. 확인하러 가시겠어요?')) {
-        // 갤러리컴포넌트로 이동
+        // 갤러리컴포넌트로 이동ㅋ
         galleryContainer.current.scrollIntoView();
       }
     }
