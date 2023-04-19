@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
 import defaultImage from '../../assets/images/default.png';
-import { useSetRecoilState } from 'recoil';
-import { photosState } from '../../atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { galleryRef, photosState } from '../../atoms';
+import { Link } from 'react-scroll';
 
 const Container = styled.div`
   width: 100%;
@@ -130,6 +131,7 @@ const FileUploadForm = () => {
   const [title, setTitle] = useState('');
   const [textBody, setTextBody] = useState('');
 
+  const galleryContainer = useRecoilValue(galleryRef);
   const setPhotos = useSetRecoilState(photosState);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -145,12 +147,15 @@ const FileUploadForm = () => {
       };
 
       localStorage.setItem('data', JSON.stringify(body));
-      setPhotos((oldPhotos) => [...oldPhotos, body]);
+      setPhotos((oldPhotos) => [body, ...oldPhotos]);
 
-      alert('공유완료');
       setTitle('');
       setTextBody('');
       setImage({ name: '', src: '' });
+      if (window.confirm('공유가 완료되었습니다. 확인하러 가시겠어요?')) {
+        // 갤러리컴포넌트로 이동
+        galleryContainer.current.scrollIntoView();
+      }
     }
   };
 

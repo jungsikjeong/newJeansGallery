@@ -43,6 +43,7 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+
   z-index: 1000;
   padding: 2.5rem;
   background-color: rgba(0, 0, 0, 0.8);
@@ -66,7 +67,7 @@ const Wrapper = styled.div<{ visible: boolean }>`
   animation: ${(props) =>
     props.visible
       ? css`
-          ${fadeIn} 800ms 1s ease-in forwards
+          ${fadeIn} 800ms .5s ease-in forwards
         `
       : css`
           ${fadeOut} .5s ease-in-out forwards
@@ -162,9 +163,15 @@ interface IPropsTypes {
     title: string;
     contents: string;
   };
+  setTargetImageInfo: any;
+  setClickedFromBestPhotos?: any;
 }
 
-const BestPhotosModal = ({ image }: IPropsTypes) => {
+const PhotosModal = ({
+  image,
+  setTargetImageInfo,
+  setClickedFromBestPhotos,
+}: IPropsTypes) => {
   const [visible, setVisible] = useState<boolean>(false);
 
   const modal = useRecoilValue(modalState);
@@ -175,6 +182,11 @@ const BestPhotosModal = ({ image }: IPropsTypes) => {
 
     setTimeout(() => {
       setModal(false);
+      if (setClickedFromBestPhotos) {
+        // BestPhotos.tsx에서 이미지를 클릭하고, 닫기눌렀을때 그 이미지를 잘 닫아주게함
+        setClickedFromBestPhotos(false);
+      }
+      setTargetImageInfo('');
     }, 600);
   };
 
@@ -201,4 +213,4 @@ const BestPhotosModal = ({ image }: IPropsTypes) => {
   );
 };
 
-export default BestPhotosModal;
+export default PhotosModal;

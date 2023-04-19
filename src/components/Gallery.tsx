@@ -1,8 +1,9 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import CustomAnimation from '../style/CustomAnimation';
-import { useRecoilValue } from 'recoil';
-import { photosState } from '../atoms';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { galleryRef, modalState, photosState } from '../atoms';
+import BestPhotosModal from './PhotosModal';
 
 const Container = styled.section`
   margin-top: 2rem;
@@ -136,6 +137,7 @@ const Item = styled.li`
     max-width: 100%;
     border-radius: 0.625rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 
     @media (min-width: 768px) {
       /* width: clamp(500px, 50% + 20px, 900px); */
@@ -147,15 +149,36 @@ const Item = styled.li`
   }
 `;
 
+interface IImageTypes {
+  id: string;
+  src: string;
+  date: string;
+  title: string;
+  contents: string;
+}
+
 const Gallery = () => {
   const containRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<any>(null);
 
+  const [targetImageInfo, setTargetImageInfo] = useState<IImageTypes>();
+
   const photos = useRecoilValue(photosState);
+  const modal = useRecoilValue(modalState);
+  const setModal = useSetRecoilState(modalState);
+  const setContainRef = useSetRecoilState(galleryRef);
+
+  const onImageClick = (photo: any) => {
+    setTargetImageInfo(photo);
+    setModal(true);
+  };
 
   useEffect(() => {
+    if (containRef.current) {
+      setContainRef(containRef);
+    }
     const onScroll = () => {
       if (
         scrollRef.current &&
@@ -196,6 +219,12 @@ const Gallery = () => {
 
   return (
     <Container ref={containRef} id='3'>
+      {modal && (
+        <BestPhotosModal
+          image={targetImageInfo}
+          setTargetImageInfo={setTargetImageInfo}
+        />
+      )}
       <Wrapper ref={wrapRef}>
         <Slogan ref={textRef}>
           <CustomAnimation>
@@ -222,7 +251,7 @@ const Gallery = () => {
           <DummyItem display='none' />
 
           {photos.map((photo) => (
-            <Item key={photo.id}>
+            <Item key={photo.id} onClick={() => onImageClick(photo)}>
               <img src={photo.src} alt='' />
             </Item>
           ))}

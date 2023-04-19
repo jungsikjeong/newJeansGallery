@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { photos } from '../data/photos';
 import CustomAnimation from '../style/CustomAnimation';
-import BestPhotosModal from './BestPhotosModal';
+import BestPhotosModal from './PhotosModal';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { modalState } from '../atoms';
 
@@ -81,29 +81,40 @@ const Photo = styled.li`
   }
 `;
 
-interface IImageTypes {
+type ImageTypes = {
   id: string;
   src: string;
   date: string;
   title: string;
   contents: string;
-}
+};
 
 const BestPhotos = () => {
   const [images, setImages] = useState(photos.slice(0, 4));
-  const [targetImageInfo, setTargetImageInfo] = useState<IImageTypes>();
+  const [ClickedFromBestPhotos, setClickedFromBestPhotos] = useState(false);
+  const [targetImageInfo, setTargetImageInfo] = useState<ImageTypes>();
 
   const modal = useRecoilValue(modalState);
   const setModal = useSetRecoilState(modalState);
 
   const onImageClick = (photo: any) => {
     setTargetImageInfo(photo);
+    // Gallery.tsx의 modal과 중복되서 작동되는것을 방지해줌
+    setClickedFromBestPhotos(true);
     setModal(true);
   };
 
   return (
     <Container id='4'>
-      {modal && <BestPhotosModal image={targetImageInfo} />}
+      {modal && ClickedFromBestPhotos && (
+        <BestPhotosModal
+          image={targetImageInfo}
+          setTargetImageInfo={setTargetImageInfo}
+          setClickedFromBestPhotos={
+            ClickedFromBestPhotos ? setClickedFromBestPhotos : ''
+          }
+        />
+      )}
       <CustomAnimation>
         <Wrapper>
           <h1 className='title'>
