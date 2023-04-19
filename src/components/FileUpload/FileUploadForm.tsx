@@ -160,7 +160,14 @@ const FileUploadForm = () => {
 
       const reader = new FileReader();
 
-      if (file && file.type.match('image.*')) {
+      if (file.type.match('image.gif')) {
+        alert('gif 파일은 올릴 수 없습니다.');
+      }
+      if (!file.type.match('image.*')) {
+        alert('이미지 파일만 업로드 가능합니다.');
+      }
+
+      if (file && file.type.match('image.*') && !file.type.match('image.gif')) {
         reader.readAsDataURL(file);
 
         reader.onload = function () {
