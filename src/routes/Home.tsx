@@ -1,13 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import styled, { keyframes } from 'styled-components';
 import ReactPlayer from 'react-player';
 import mainVideoFile from '../assets/images/mainVideo.mp4';
-import newJeans01 from '../assets/images/newJeans1.gif';
+import introGIF from '../assets/images/인트로GIF.gif';
 import InitialScreen from '../components/InitialScreen';
 import Gallery from '../components/Gallery';
 import BestPhotos from '../components/BestPhotos';
-import ObserverViewport from '../hook/ObserverViewport';
+import CustomAnimation from '../style/CustomAnimation';
+import NewAuthor from '../components/NewAuthor';
+import FileUpload from '../components/FileUpload/FileUpload';
+import CustomerVoice from '../components/CustomerVoice';
+import Footer from '../components/Footer';
 
 const moveUp = keyframes`
 0%{
@@ -25,6 +29,7 @@ const moveUp = keyframes`
 `;
 
 const Container = styled.div`
+  position: relative;
   overflow: hidden;
 
   strong {
@@ -96,17 +101,22 @@ const Wrapper = styled.div`
 
   p {
     line-height: 1.2;
-    /* color: ${({ theme }) => theme.textColor}; */
   }
 
   .title {
+    margin-top: 2rem;
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 2rem;
+    font-size: 3rem;
+    @media (min-width: 768px) {
+      margin-top: 0;
+      font-size: 3.75rem;
+    }
   }
 
   .text {
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     margin-bottom: 1rem;
   }
 
@@ -136,8 +146,12 @@ const NewsWrapper = styled.div`
 
   .title {
     font-weight: bold;
-    font-size: 3.5rem;
+    font-size: 2rem;
+
     margin-bottom: 1.875rem;
+    @media (min-width: 768px) {
+      font-size: 3.125rem;
+    }
   }
 
   .line-bottom {
@@ -177,6 +191,7 @@ const NewsItem = styled.li`
     margin-left: 1rem;
 
     @media (max-width: 768px) {
+      padding-top: 2rem;
       margin: 0;
     }
   }
@@ -193,10 +208,12 @@ const Article = styled.article`
   }
 
   h3 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 
   p {
+    color: #7b8084;
     margin-top: 1rem;
     word-break: keep-all;
     margin-bottom: 1rem;
@@ -210,14 +227,12 @@ const Article = styled.article`
   }
 
   footer {
-    font-size: 1.2rem;
+    font-size: 1.125rem;
   }
 `;
 
 const Home = () => {
   const [screen, setScreen] = useState(false);
-
-  const ref = ObserverViewport();
 
   useEffect(() => {
     // 새로고침시 스크롤 최상단이동
@@ -258,25 +273,29 @@ const Home = () => {
 
           <Section backgroundColor={'#000'}>
             <Wrapper>
-              <div className='left-box' ref={ref}>
-                <p className='title'>시대의 아이콘</p>
-                <p className='text'>
-                  매일 찾게 되고
-                  <br />
-                  언제 입어도 질리지 않는 <br />
-                  <strong>Jean</strong>처럼 시대의 아이콘이 되겠습니다.
-                </p>
-              </div>
+              <CustomAnimation>
+                <div className='left-box'>
+                  <p className='title'>시대의 아이콘</p>
+                  <p className='text'>
+                    매일 찾게 되고
+                    <br />
+                    언제 입어도 질리지 않는 <br />
+                    <strong>Jean</strong>처럼 시대의 아이콘이 되겠습니다.
+                  </p>
+                </div>
+              </CustomAnimation>
 
               <div>
-                <img src={newJeans01} alt='' />
+                <img src={introGIF} alt='' />
               </div>
             </Wrapper>
           </Section>
 
           <Section backgroundColor={''}>
             <NewsWrapper>
-              <h2 className='title line-bottom'>새소식</h2>
+              <CustomAnimation>
+                <h2 className='title line-bottom'>새소식</h2>
+              </CustomAnimation>
 
               <NewsList>
                 <NewsItem>
@@ -342,9 +361,22 @@ const Home = () => {
             </NewsWrapper>
           </Section>
 
+          {/* 갤러리 */}
           <Gallery />
 
+          {/* 인기사진 */}
           <BestPhotos />
+
+          {/* 신규작가 */}
+          <NewAuthor />
+
+          {/* 파일업로드 */}
+          <FileUpload />
+
+          {/* 고객의 소리 */}
+          <CustomerVoice />
+
+          <Footer />
         </>
       )}
     </Container>

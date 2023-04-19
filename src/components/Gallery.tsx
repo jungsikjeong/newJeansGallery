@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { photos } from '../utils/photos';
+import CustomAnimation from '../style/CustomAnimation';
+import { useRecoilValue } from 'recoil';
+import { photosState } from '../atoms';
 
 const Container = styled.section`
   margin-top: 2rem;
@@ -17,6 +19,7 @@ const Container = styled.section`
 `;
 
 const Wrapper = styled.div`
+  z-index: 100;
   @media (min-width: 768px) {
     padding-top: 6.25rem;
     overflow: hidden;
@@ -31,11 +34,14 @@ const Wrapper = styled.div`
 
 const Slogan = styled.div`
   .title {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   @media (min-width: 768px) {
     color: white;
+    .title {
+      font-size: 4rem;
+    }
   }
 
   transition: all 0.3s ease-out;
@@ -147,6 +153,8 @@ const Gallery = () => {
   const textRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<any>(null);
 
+  const photos = useRecoilValue(photosState);
+
   useEffect(() => {
     const onScroll = () => {
       if (
@@ -190,21 +198,23 @@ const Gallery = () => {
     <Container ref={containRef}>
       <Wrapper ref={wrapRef}>
         <Slogan ref={textRef}>
-          <span className='title'>
-            여러분의
+          <CustomAnimation>
+            <span className='title'>
+              여러분의
+              <br />
+              뉴진스가
+              <br />
+              <strong>사진속에</strong>
+            </span>
             <br />
-            뉴진스가
             <br />
-            <strong>사진속에</strong>
-          </span>
-          <br />
-          <br />
 
-          <span>
-            내가 올린 사진이 갤러리에
-            <br />
-            지금 그 다채로움을 경험해보세요.
-          </span>
+            <span>
+              내가 올린 사진이 갤러리에
+              <br />
+              지금 그 다채로움을 경험해보세요.
+            </span>
+          </CustomAnimation>
         </Slogan>
         <List ref={scrollRef}>
           <DummyItem display='block' />
