@@ -45,7 +45,7 @@ const Wrapper = styled.div`
 
 const FileUpload = () => {
   return (
-    <Container>
+    <Container id='5'>
       <Wrapper>
         <CustomAnimation>
           <h1 className='title'>

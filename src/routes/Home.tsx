@@ -231,6 +231,25 @@ const Article = styled.article`
   }
 `;
 
+const BackToTopBtn = styled.div`
+  @media (min-width: 1300px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 2rem;
+    bottom: 30rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border: 1px solid #95a5a6;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  display: none;
+`;
+
 const Home = () => {
   const [screen, setScreen] = useState(false);
 
@@ -272,7 +291,7 @@ const Home = () => {
           <Header />
 
           <Section backgroundColor={'#000'}>
-            <Wrapper>
+            <Wrapper id='1'>
               <CustomAnimation>
                 <div className='left-box'>
                   <p className='title'>시대의 아이콘</p>
@@ -291,7 +310,7 @@ const Home = () => {
             </Wrapper>
           </Section>
 
-          <Section backgroundColor={''}>
+          <Section backgroundColor={''} id='2'>
             <NewsWrapper>
               <CustomAnimation>
                 <h2 className='title line-bottom'>새소식</h2>
@@ -377,6 +396,14 @@ const Home = () => {
           <CustomerVoice />
 
           <Footer />
+
+          <BackToTopBtn
+            onClick={() => {
+              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+            }}
+          >
+            ▲
+          </BackToTopBtn>
         </>
       )}
     </Container>

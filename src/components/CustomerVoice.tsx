@@ -134,7 +134,7 @@ const VoiceImgBox = styled.div`
 
 const CustomerVoice = () => {
   return (
-    <Container>
+    <Container id='6'>
       <Wrapper>
         <h1 className='title'>
           <span>Customer Voice</span>

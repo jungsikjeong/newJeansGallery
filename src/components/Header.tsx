@@ -170,17 +170,19 @@ const Header = () => {
   }, []);
 
   return (
-    <Container isHeader={isHeader}>
+    <>
       <SideMenu isMenu={isMenu} onMenuClick={onMenuClick} />
-      <Wrapper>
-        <Cat ref={catRef} />
-        <Title>GALLERIA</Title>
+      <Container isHeader={isHeader}>
+        <Wrapper>
+          <Cat ref={catRef} />
+          <Title>GALLERIA</Title>
 
-        <Icon ref={menuBtn} onClick={onMenuClick}>
-          <FiMenu />
-        </Icon>
-      </Wrapper>
-    </Container>
+          <Icon ref={menuBtn} onClick={onMenuClick}>
+            <FiMenu />
+          </Icon>
+        </Wrapper>
+      </Container>
+    </>
   );
 };
 

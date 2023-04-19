@@ -102,7 +102,7 @@ const BestPhotos = () => {
   };
 
   return (
-    <Container>
+    <Container id='4'>
       {modal && <BestPhotosModal image={targetImageInfo} />}
       <CustomAnimation>
         <Wrapper>

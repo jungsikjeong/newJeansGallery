@@ -195,7 +195,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <Container ref={containRef}>
+    <Container ref={containRef} id='3'>
       <Wrapper ref={wrapRef}>
         <Slogan ref={textRef}>
           <CustomAnimation>
