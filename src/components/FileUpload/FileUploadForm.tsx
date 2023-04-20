@@ -49,7 +49,7 @@ const Contents = styled.textarea`
   width: 100%;
   height: 120px;
   margin-bottom: 1.875rem;
-  border: 0;
+  border: 1px solid #eee;
   background-color: #fff;
   padding: 0.75rem 0.625rem;
   border-radius: 0.625rem;
