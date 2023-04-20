@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import uuid from 'react-uuid';
 import defaultImage from '../../assets/images/default.png';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { galleryRef, photosState } from '../../atoms';
 import { dateParse } from '../../utils/date';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 const Container = styled.div`
   width: 100%;
@@ -32,7 +32,7 @@ const Form = styled.form<{ flexShrink: string }>`
 const Input = styled.input`
   width: 100%;
   margin-bottom: 1.875rem;
-  border: 0;
+  border: 1px solid #eee;
   background-color: #fff;
   padding: 0.75rem 0.625rem;
   border-radius: 0.625rem;
