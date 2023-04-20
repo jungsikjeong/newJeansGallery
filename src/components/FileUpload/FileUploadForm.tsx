@@ -4,7 +4,6 @@ import uuid from 'react-uuid';
 import defaultImage from '../../assets/images/default.png';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { galleryRef, photosState } from '../../atoms';
-import { Link } from 'react-scroll';
 import { dateParse } from '../../utils/date';
 
 const Container = styled.div`

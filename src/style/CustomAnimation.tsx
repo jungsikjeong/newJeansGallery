@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Reveal from 'react-awesome-reveal';
 import { keyframes } from '@emotion/react';
 
@@ -19,7 +18,11 @@ const moveUp = keyframes`
 `;
 
 const CustomAnimation = ({ children }: any) => {
-  return <Reveal keyframes={moveUp}>{children}</Reveal>;
+  return (
+    <Reveal keyframes={moveUp} triggerOnce={true}>
+      {children}
+    </Reveal>
+  );
 };
 
 export default CustomAnimation;

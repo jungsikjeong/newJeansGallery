@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import me from '../assets/images/me.png';
+import CustomAnimation from '../style/CustomAnimation';
 
 const Container = styled.section`
   width: 100vw;
@@ -136,9 +137,11 @@ const CustomerVoice = () => {
   return (
     <Container id='6'>
       <Wrapper>
-        <h1 className='title'>
-          <span>Customer Voice</span>
-        </h1>
+        <CustomAnimation>
+          <h1 className='title'>
+            <span>Customer Voice</span>
+          </h1>
+        </CustomAnimation>
 
         <VoiceBox>
           <VoiceContent>

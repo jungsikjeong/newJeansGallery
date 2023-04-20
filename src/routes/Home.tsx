@@ -12,7 +12,6 @@ import NewAuthor from '../components/NewAuthor';
 import FileUpload from '../components/FileUpload/FileUpload';
 import CustomerVoice from '../components/CustomerVoice';
 import Footer from '../components/Footer';
-import { dateParse } from '../utils/date';
 
 const moveUp = keyframes`
 0%{
