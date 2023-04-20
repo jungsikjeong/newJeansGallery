@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import ReactPlayer from 'react-player';
-import initialVideo from '../assets/images/뉴진스소개.mp4';
+import initialImage from '../assets/images/initialImage.gif';
 
 const goDown = keyframes`
 80% {
@@ -36,15 +36,7 @@ const InitialScreen = () => {
   return (
     <Container>
       <Wrapper>
-        <ReactPlayer
-          url={initialVideo}
-          muted={true}
-          controls={false}
-          playing={true}
-          loop={true}
-          width='100%'
-          height='500px'
-        />
+        <img src={initialImage} alt='처음시작시 로딩화면' />
       </Wrapper>
     </Container>
   );

@@ -200,6 +200,7 @@ const NewsItem = styled.li`
 const Article = styled.article`
   display: flex;
   flex-direction: column;
+
   margin-top: 1rem;
   border-radius: 0.625rem;
 
@@ -208,7 +209,11 @@ const Article = styled.article`
   }
 
   h3 {
-    font-size: 1.5rem;
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+
+    font-size: 1.4rem;
     font-weight: 600;
   }
 
