@@ -81,13 +81,13 @@ const Photo = styled.li`
   }
 `;
 
-type ImageTypes = {
+interface ImageTypes {
   id: string;
   src: string;
   date: string;
   title: string;
   contents: string;
-};
+}
 
 const BestPhotos = () => {
   const [images, setImages] = useState(photos.slice(0, 4));

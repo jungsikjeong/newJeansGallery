@@ -2,13 +2,13 @@ import { atom } from 'recoil';
 import { photos } from './data/photos';
 import { useRef } from 'react';
 
-type PhotosType = {
+interface PhotosType {
   id: string;
   src: string;
   title: string;
   contents: string;
   date: string;
-};
+}
 
 export const modalState = atom({
   key: 'modal',

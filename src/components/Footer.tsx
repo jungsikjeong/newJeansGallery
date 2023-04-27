@@ -17,8 +17,8 @@ const Container = styled.section`
 
 const Wrapper = styled.div`
   @media (min-width: 768px) {
-    position: relative;
     max-width: 1200px;
+    position: relative;
     margin: 0 auto;
   }
 
@@ -34,7 +34,7 @@ const AddressWrap = styled.div`
   @media (min-width: 768px) {
     position: absolute;
     top: 6rem;
-    left: 25rem;
+    left: 23rem;
   }
 
   p {
@@ -64,7 +64,7 @@ const CopyRight = styled.div`
   @media (min-width: 768px) {
     position: absolute;
     /* top: 6rem; */
-    left: 25rem;
+    left: 23rem;
     bottom: -14rem;
   }
   margin-bottom: 1rem;

@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import ReactPlayer from 'react-player';
 import initialImage from '../assets/images/initialImage.gif';
 
 const goDown = keyframes`
