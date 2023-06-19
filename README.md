@@ -1,5 +1,7 @@
 > 이 프로젝트는 [강희](https://github.com/kheeyaa)님의 발자취를 따라갔습니다.(디자인 카피)<br/>
 
+> 제가 만든 [GALLERIA](https://new-jeans-gallery.vercel.app/) 보러가기
+
 # 개요
 
 최근에 배운 타입스크립트를 활용해보고 싶었던 와중에,
