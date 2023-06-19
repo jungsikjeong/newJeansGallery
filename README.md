@@ -29,20 +29,20 @@ react-scroll, react-player, react-awesome-reveal, react-uuid, react-icons등등.
 
 ## 애니메이션 및 전체 구현화면
 
-![이미지](https://velog.velcdn.com/images/wndtlr1024/post/4727c667-3e76-42cc-a762-871b4e5dc808/image.gif)
+![이미지](./public/1.gif)
 
 react-awesome-revea 라이브러리를 활용하여 사용자 화면에 요소가 근접하면 애니메이션되도록 해주었습니다.
 
 ## 이미지 올리기
 
-![이미지](https://velog.velcdn.com/images/wndtlr1024/post/7b5cbd93-c6a0-4073-8e64-cc679b2c30f7/image.gif)
+![이미지](./public/2.gif)
 
 이미지를 올리고 공유하기 버튼을 누르면 갤러리에 이미지가 올라가게끔 해주었습니다.
 갤러리 이미지는 `react-recoil`를 사용하여 전역상태로 관리해주고있고, `로컬스토리지`를 활용하여 사용자가 사이트를 나갔다 들어와도 사용자가 올렸던 이미지는 유지되게끔 만들어주었습니다.
 
 # 어려움
 
-![이미지](https://velog.velcdn.com/images/wndtlr1024/post/d69aba23-af2a-44c3-bc16-40c6f5d962dc/image.gif)
+![이미지](./public/3.gif)
 
 갤러리를 구현하는 과정에서 원본 사이트에서는 포지션스티키를 주었지만, 저는 무엇때문인지 동작하지않았습니다. 그래서 포지션:fixed를 활용해서 비슷하게 구현했습니다.
 
