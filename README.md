@@ -20,7 +20,7 @@ type키워드를 이용한 타입지정보다 유연하기때문에 사용해줬
 
 # 기술스택
 
-리액트,타입스크립트를 사용하였고, css로 styled-component를 사용하였습니다.
+리액트,타입스크립트를 사용하였고, css로 styled-compoentns를 사용하였습니다.
 
 그 외..
 react-scroll, react-player, react-awesome-reveal, react-uuid, react-icons등등..
