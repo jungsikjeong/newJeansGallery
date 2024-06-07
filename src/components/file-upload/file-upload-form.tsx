@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import uuid from 'react-uuid';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import defaultImage from '../../assets/images/default.png';
 import { galleryRef, photosState } from '../../atoms';
 import { dateParse } from '../../utils/date';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 
 const Container = styled.div`
   width: 100%;

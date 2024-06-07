@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
 import { FiMenu } from 'react-icons/fi';
+import styled, { keyframes } from 'styled-components';
 import catImg from '../assets/images/cat.png';
-import SideMenu from './SideMenu';
+import SideMenu from './side-menu';
 
 const walking = keyframes`
   0% {

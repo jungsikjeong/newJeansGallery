@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 import CustomAnimation from '../../style/CustomAnimation';
-import FileUploadForm from './FileUploadForm';
+import FileUploadForm from './file-upload-form';
 
 const Container = styled.section`
   height: 100vh;

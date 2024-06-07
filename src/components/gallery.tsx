@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import CustomAnimation from '../style/CustomAnimation';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { galleryRef, modalState, photosState } from '../atoms';
-import BestPhotosModal from './PhotosModal';
+import CustomAnimation from '../style/CustomAnimation';
+import BestPhotosModal from './photos-modal';
 
 const Container = styled.section`
   margin-top: 2rem;

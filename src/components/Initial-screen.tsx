@@ -1,4 +1,6 @@
+import { useLocation } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+
 import initialImage from '../assets/images/initialImage.gif';
 
 const goDown = keyframes`
@@ -8,7 +10,6 @@ const goDown = keyframes`
 
 100% {
     transform: scaleY(0);
-    
 }
 `;
 
@@ -32,12 +33,18 @@ const Wrapper = styled.div`
 `;
 
 const InitialScreen = () => {
+  const location = useLocation();
+
   return (
-    <Container>
-      <Wrapper>
-        <img src={initialImage} alt='처음시작시 로딩화면' />
-      </Wrapper>
-    </Container>
+    <>
+      {location?.pathname === '/' && (
+        <Container>
+          <Wrapper>
+            <img src={initialImage} alt='처음시작시 로딩화면' />
+          </Wrapper>
+        </Container>
+      )}
+    </>
   );
 };
 

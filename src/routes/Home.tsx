@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
-import Header from '../components/Header';
-import styled, { keyframes } from 'styled-components';
 import ReactPlayer from 'react-player';
+import styled, { keyframes } from 'styled-components';
 import mainVideoFile from '../assets/images/mainVideo.mp4';
 import introGIF from '../assets/images/인트로GIF.gif';
-import InitialScreen from '../components/InitialScreen';
-import Gallery from '../components/Gallery';
-import BestPhotos from '../components/BestPhotos';
+import InitialScreen from '../components/Initial-screen';
+import BestPhotos from '../components/best-photos';
+import CustomerVoice from '../components/customer-voice';
+import FileUpload from '../components/file-upload';
+import Footer from '../components/footer';
+import Gallery from '../components/gallery';
+import Header from '../components/header';
+import NewAuthor from '../components/new-author';
 import CustomAnimation from '../style/CustomAnimation';
-import NewAuthor from '../components/NewAuthor';
-import FileUpload from '../components/FileUpload/FileUpload';
-import CustomerVoice from '../components/CustomerVoice';
-import Footer from '../components/Footer';
 
 const moveUp = keyframes`
 0%{
@@ -276,7 +276,7 @@ const Home = () => {
 
   return (
     <Container>
-      {/* 초기 스크린 */}
+      {/* '/' 경로에서만 뜨는 초기 스크린 */}
       <InitialScreen />
 
       <VideoSection>

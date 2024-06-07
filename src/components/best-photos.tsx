@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { modalState } from '../atoms';
 import { photos } from '../data/photos';
 import CustomAnimation from '../style/CustomAnimation';
-import BestPhotosModal from './PhotosModal';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { modalState } from '../atoms';
+import BestPhotosModal from './photos-modal';
 
 const Container = styled.section`
   position: relative;
