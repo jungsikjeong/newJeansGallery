@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
+
 import mainVideoFile from '../assets/images/mainVideo.mp4';
 import introGIF from '../assets/images/인트로GIF.gif';
+import CustomAnimation from '../style/CustomAnimation';
+
 import InitialScreen from '../components/Initial-screen';
 import BestPhotos from '../components/best-photos';
+import MoveUpButton from '../components/common/move-up-button';
+import Section from '../components/common/section';
 import CustomerVoice from '../components/customer-voice';
 import FileUpload from '../components/file-upload';
 import Footer from '../components/footer';
 import Gallery from '../components/gallery';
 import Header from '../components/header';
 import NewAuthor from '../components/new-author';
-import CustomAnimation from '../style/CustomAnimation';
 
 const moveUp = keyframes`
 0%{
@@ -68,15 +72,6 @@ const MainLogo = styled.div`
     left: 10%;
     font-size: 1.5rem;
   }
-`;
-
-const Section = styled.section<{
-  backgroundColor: string | undefined;
-}>`
-  width: 100%;
-  background-color: ${(props) =>
-    props.backgroundColor ? props.backgroundColor : props.theme.bgColor};
-  padding: 1rem;
 `;
 
 const Wrapper = styled.div`
@@ -236,30 +231,6 @@ const Article = styled.article`
   }
 `;
 
-const BackToTopBtn = styled.div`
-  @media (min-width: 1300px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: 2rem;
-    bottom: 30rem;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border: 1px solid #95a5a6;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-  display: none;
-`;
-
 const Home = () => {
   const [screen, setScreen] = useState(false);
 
@@ -289,6 +260,7 @@ const Home = () => {
           width='100%'
           height='100%'
         />
+
         <MainLogo>
           매일 찾게되고
           <br />
@@ -408,13 +380,7 @@ const Home = () => {
 
           <Footer />
 
-          <BackToTopBtn
-            onClick={() => {
-              window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-            }}
-          >
-            ▲
-          </BackToTopBtn>
+          <MoveUpButton />
         </>
       )}
     </Container>
