@@ -63,7 +63,7 @@ const Container = styled.header<{ isHeader: boolean }>`
   transform: ${({ isHeader }) =>
     isHeader ? ` translateY(0)` : ` translateY(-100%)`};
   background-color: rgba(255, 255, 255, 0.9);
-  color: ${({ theme }) => theme.textColor};
+  color: ${({ theme }) => theme.darkColor};
   display: flex;
   justify-content: center;
   align-items: center;

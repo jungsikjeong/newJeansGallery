@@ -54,7 +54,7 @@ table {
 body{
   font-family: 'Noto Sans KR', sans-serif;
   background-color: ${({ theme }) => theme.bgColor};
-  color:${({ theme }) => theme.textColor}
+  color:${({ theme }) => theme.darkColor}
 }
 
 a{
