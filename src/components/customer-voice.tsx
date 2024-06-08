@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CustomAnimation from '../style/CustomAnimation';
+import CustomAnimation from '../style/custom-animation';
 
 const Container = styled.section`
   width: 100vw;

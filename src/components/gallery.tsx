@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { galleryRef, modalState, photosState } from '../atoms';
-import CustomAnimation from '../style/CustomAnimation';
+import CustomAnimation from '../style/custom-animation';
 import BestPhotosModal from './photos-modal';
 
 const Container = styled.section`
@@ -20,6 +20,7 @@ const Container = styled.section`
 `;
 
 const Wrapper = styled.div`
+  position: relative;
   z-index: 100;
 
   @media (min-width: 768px) {
@@ -69,7 +70,6 @@ const Slogan = styled.div`
 `;
 
 const List = styled.ul`
-  /* @media (min-width: 768px) { */
   width: 4000px;
   height: 100vh;
   display: flex;
@@ -77,7 +77,6 @@ const List = styled.ul`
   justify-content: space-around;
   align-items: stretch;
   flex-wrap: nowrap;
-  /* } */
 `;
 
 const DummyItem = styled.li<{ display: string }>`
@@ -141,6 +140,16 @@ const Item = styled.li`
   }
 `;
 
+const Test = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 120px;
+  height: 100%;
+  background-image: linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 10;
+`;
+
 interface IImageTypes {
   id: string;
   src: string;
@@ -181,6 +190,26 @@ const Gallery = () => {
   }, []);
 
   useEffect(() => {
+    const fadeOutOnScroll = () => {
+      const items = scrollRef.current.querySelectorAll('li img');
+
+      items.forEach((img: any) => {
+        const imgLeft = img.getBoundingClientRect().left;
+        const windowWidth = window.innerWidth;
+        let imgOpacity = 1;
+
+        // 이미지가 화면 왼쪽 밖으로 나갈 때 opacity 조절
+        if (imgLeft < 0) {
+          imgOpacity = Math.max(
+            0,
+            Math.min(1, 1 - (-imgLeft / windowWidth) * 2)
+          );
+        }
+
+        img.style.opacity = imgOpacity.toString();
+      });
+    };
+
     const onScroll = () => {
       if (
         scrollRef.current &&
@@ -188,25 +217,24 @@ const Gallery = () => {
         wrapRef.current &&
         textRef.current
       ) {
+        let scrollTop = window.scrollY;
         let viewWidth = window.innerWidth;
         let maxScrollPosition = viewWidth >= 768 ? 4000 : 4800;
         let galleryPosition = containRef.current.offsetTop;
-        let scrollLocation = document.documentElement.scrollTop;
 
-        if (scrollLocation - galleryPosition >= 650) {
+        if (scrollTop - galleryPosition >= 650) {
           textRef.current.style.opacity = '0';
         } else {
           textRef.current.style.opacity = '1';
         }
 
         if (
-          // viewWidth >= 768 &&
-          scrollLocation >= galleryPosition &&
-          scrollLocation < galleryPosition + maxScrollPosition
+          scrollTop >= galleryPosition &&
+          scrollTop < galleryPosition + maxScrollPosition
         ) {
           wrapRef.current.style.position = 'fixed';
           wrapRef.current.style.top = '0';
-          let percent = ((scrollLocation - galleryPosition) / 4000) * -80;
+          let percent = ((scrollTop - galleryPosition) / 4000) * -80;
           scrollRef.current.style.transform = 'translateX(' + percent + '%)';
         } else {
           wrapRef.current.style.position = 'static';
@@ -214,9 +242,11 @@ const Gallery = () => {
       }
     };
     window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', fadeOutOnScroll);
 
     return () => {
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scroll', fadeOutOnScroll);
     };
   }, []);
 
@@ -248,6 +278,8 @@ const Gallery = () => {
             </span>
           </CustomAnimation>
         </Slogan>
+
+        {/* <Test /> */}
         <List ref={scrollRef}>
           <DummyItem display='block' />
           <DummyItem display='none' />

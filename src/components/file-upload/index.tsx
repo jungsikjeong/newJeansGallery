@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CustomAnimation from '../../style/CustomAnimation';
+import CustomAnimation from '../../style/custom-animation';
 import FileUploadForm from './file-upload-form';
 
 const Container = styled.section`

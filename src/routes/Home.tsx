@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
-import CustomAnimation from '../style/CustomAnimation';
+import CustomAnimation from '../style/custom-animation';
 
 import InitialScreen from '../components/Initial-screen';
 import BestPhotos from '../components/best-photos';

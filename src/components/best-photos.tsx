@@ -3,7 +3,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { modalState } from '../atoms';
 import { photos } from '../data/photos';
-import CustomAnimation from '../style/CustomAnimation';
+import CustomAnimation from '../style/custom-animation';
 import BestPhotosModal from './photos-modal';
 
 const Container = styled.section`
