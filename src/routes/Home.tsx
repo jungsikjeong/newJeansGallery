@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
-import mainVideoFile from '../assets/images/mainVideo.mp4';
 import introGIF from '../assets/images/인트로GIF.gif';
 import CustomAnimation from '../style/CustomAnimation';
 
@@ -252,7 +251,7 @@ const Home = () => {
 
       <VideoSection>
         <ReactPlayer
-          url={mainVideoFile}
+          url='/assets/videos/main.mp4'
           muted={true}
           controls={false}
           playing={true}

@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import me from '../assets/images/me.png';
 import CustomAnimation from '../style/CustomAnimation';
 
 const Container = styled.section`
@@ -159,7 +157,7 @@ const CustomerVoice = () => {
 
           <VoiceImgBox>
             <div />
-            <img src={me} alt='' />
+            <img src='/assets/images/customer-voice-user.jpg' alt='' />
           </VoiceImgBox>
         </VoiceBox>
       </Wrapper>
