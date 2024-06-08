@@ -21,16 +21,33 @@ const Container = styled.section`
 
 const Wrapper = styled.div`
   z-index: 100;
-  /* @media (min-width: 768px) { */
-  padding-top: 6.25rem;
-  overflow: hidden;
-  width: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
-    url('https://res.heraldm.com/content/image/2022/09/08/20220908000164_0.jpg');
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-  /* } */
+
+  @media (min-width: 768px) {
+    padding-top: 6.25rem;
+    overflow: hidden;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+      url('https://res.heraldm.com/content/image/2022/09/08/20220908000164_0.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  @media (max-width: 768px) {
+    padding-top: 6.25rem;
+    overflow: hidden;
+
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+      url('https://res.heraldm.com/content/image/2022/09/08/20220908000164_0.jpg');
+    background-size: cover;
+    background-position: center center;
+  }
 `;
 
 const Slogan = styled.div`
@@ -190,6 +207,7 @@ const Gallery = () => {
           // viewWidth >= 768 &&
           scrollLocation >= galleryPosition &&
           scrollLocation < galleryPosition + 4800
+          // scrollLocation < galleryPosition + 4000 // 원본
         ) {
           wrapRef.current.style.position = 'fixed';
           wrapRef.current.style.top = '0';

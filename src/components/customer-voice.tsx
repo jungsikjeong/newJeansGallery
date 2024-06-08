@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
   .title {
     margin: 3rem 0 1rem 0;
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
 
@@ -53,6 +53,9 @@ const Content = styled.div`
   word-break: keep-all;
 
   p {
+    opacity: 0.8;
+    line-height: 1.4;
+    font-weight: 700;
     @media (max-width: 768px) {
       flex: 0;
     }
@@ -60,29 +63,27 @@ const Content = styled.div`
       margin-top: 3.75rem;
       font-size: 1.5625rem;
     }
-    opacity: 0.8;
-    line-height: 1.4;
-    font-weight: 700;
+  }
+`;
+
+const UserWrap = styled.div`
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 0;
+    font-size: 1.25rem;
   }
 
-  .content-member {
-    @media (min-width: 768px) {
-      position: absolute;
-      bottom: 0;
-      font-size: 1.25rem;
-    }
-    margin-top: 1rem;
+  margin-top: 1rem;
 
-    .content-name {
-      font-weight: 400;
-      border-bottom: 1px solid tomato;
-    }
+  .name {
+    font-weight: 400;
+    border-bottom: 1px solid tomato;
+  }
 
-    .content-detail {
-      display: block;
-      opacity: 0.8;
-      margin: 0.625rem 0;
-    }
+  .detail {
+    display: block;
+    opacity: 0.8;
+    margin: 0.625rem 0;
   }
 `;
 
@@ -147,11 +148,12 @@ const CustomerVoice = () => {
               수 있어서 좋아요. 또, 다른 버니즈들은 어떤 뉴진스 사진을
               가지고있는지 볼 수 있어서 좋아요.
             </p>
-            <div className='content-member'>
-              <span className='content-name'>정중식</span>
+
+            <UserWrap>
+              <span className='name'>정중식</span>
               <br />
-              <span className='content-detail'>GALLERIA 멤버</span>
-            </div>
+              <span className='detail'>GALLERIA 멤버</span>
+            </UserWrap>
           </Content>
 
           <ImgBox>
