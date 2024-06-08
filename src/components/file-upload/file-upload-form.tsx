@@ -24,6 +24,7 @@ const Form = styled.form<{ flexShrink: string }>`
   height: 100%;
   @media (min-width: 768px) {
     max-width: 50%;
+    margin-right: 2rem;
     flex: ${(props) => (props.flexShrink ? '1 0 50%' : '1 1 50%')};
   }
 `;
@@ -108,13 +109,15 @@ const PreviewImage = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-  margin-left: 2rem;
+  aspect-ratio: auto 1;
 
   img {
     max-width: 100%;
+    width: 100%;
     height: 100%;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     border-radius: 0.625rem;
+    object-fit: cover;
   }
 `;
 
@@ -167,14 +170,14 @@ const FileUploadForm = () => {
 
       const reader = new FileReader();
 
-      if (file.type.match('image.gif')) {
-        alert('gif 파일은 올릴 수 없습니다.');
-      }
+      // if (file.type.match('image.gif')) {
+      //   alert('gif 파일은 올릴 수 없습니다.');
+      // }
       if (!file.type.match('image.*')) {
         alert('이미지 파일만 업로드 가능합니다.');
       }
 
-      if (file && file.type.match('image.*') && !file.type.match('image.gif')) {
+      if (file && file.type.match('image.*')) {
         reader.readAsDataURL(file);
 
         reader.onload = function () {
@@ -231,6 +234,7 @@ const FileUploadForm = () => {
             공유하기
           </Button>
         </Form>
+
         <PreviewImage>
           <img
             src={image.src ? image.src : '/assets/images/default.png'}

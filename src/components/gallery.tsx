@@ -140,16 +140,6 @@ const Item = styled.li`
   }
 `;
 
-const Test = styled.div`
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 120px;
-  height: 100%;
-  background-image: linear-gradient(rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
-  z-index: 10;
-`;
-
 interface IImageTypes {
   id: string;
   src: string;
@@ -279,7 +269,6 @@ const Gallery = () => {
           </CustomAnimation>
         </Slogan>
 
-        {/* <Test /> */}
         <List ref={scrollRef}>
           <DummyItem display='block' />
           <DummyItem display='none' />

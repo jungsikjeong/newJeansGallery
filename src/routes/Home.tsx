@@ -247,16 +247,6 @@ const Home = () => {
       <InitialScreen />
 
       <VideoSection>
-        {/* <ReactPlayer
-          url='/assets/videos/main.mp4'
-          muted={true}
-          controls={false}
-          playing={true}
-          loop={true}
-          width='100%'
-          height='100%'
-        /> */}
-
         <video
           src='/assets/videos/main.mp4'
           autoPlay

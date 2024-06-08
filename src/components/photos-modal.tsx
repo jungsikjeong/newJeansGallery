@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled, { css, keyframes } from 'styled-components';
 import { modalState } from '../atoms';
@@ -43,7 +43,6 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-
   z-index: 1000;
   padding: 2.5rem;
   background-color: rgba(0, 0, 0, 0.8);
@@ -123,6 +122,8 @@ const ImageWrap = styled.div`
 
   img {
     max-width: 100%;
+    width: 100%;
+    height: 100%;
     /* width: 600px; */
     height: auto;
     max-height: 500px;
