@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
 import CustomAnimation from '../style/custom-animation';
@@ -248,7 +247,7 @@ const Home = () => {
       <InitialScreen />
 
       <VideoSection>
-        <ReactPlayer
+        {/* <ReactPlayer
           url='/assets/videos/main.mp4'
           muted={true}
           controls={false}
@@ -256,7 +255,16 @@ const Home = () => {
           loop={true}
           width='100%'
           height='100%'
-        />
+        /> */}
+
+        <video
+          src='/assets/videos/main.mp4'
+          autoPlay
+          muted
+          playsInline
+          width='100%'
+          loop
+        ></video>
 
         <MainLogo>
           매일 찾게되고
