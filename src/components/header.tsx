@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import styled, { keyframes } from 'styled-components';
-import catImg from '../assets/images/cat.png';
 import SideMenu from './side-menu';
 
 const walking = keyframes`
@@ -95,7 +94,7 @@ const Icon = styled.div`
 `;
 
 const Cat = styled.div`
-  background-image: url(${catImg});
+  background-image: url('/assets/images/cat.png');
   width: 5rem;
   height: 2.5rem;
   transform: scaleX(-1);

@@ -1,15 +1,17 @@
-import { useLocation } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
-
-import initialImage from '../assets/images/initialImage.gif';
 
 const goDown = keyframes`
 80% {
     transform: scaleY(0.21);
+    display: block;
+    visibility: visible;
+
 }
 
 100% {
     transform: scaleY(0);
+    display: none;
+    visibility: hidden;
 }
 `;
 
@@ -22,6 +24,7 @@ const Container = styled.div`
   z-index: 1000;
   background-color: black;
   animation: ${goDown} 1s 3s ease-in-out forwards;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
@@ -33,18 +36,12 @@ const Wrapper = styled.div`
 `;
 
 const InitialScreen = () => {
-  const location = useLocation();
-
   return (
-    <>
-      {location?.pathname === '/' && (
-        <Container>
-          <Wrapper>
-            <img src={initialImage} alt='처음시작시 로딩화면' />
-          </Wrapper>
-        </Container>
-      )}
-    </>
+    <Container>
+      <Wrapper>
+        <img src='/assets/images/initialImage.gif' alt='처음시작시 로딩화면' />
+      </Wrapper>
+    </Container>
   );
 };
 

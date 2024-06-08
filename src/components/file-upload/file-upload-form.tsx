@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import uuid from 'react-uuid';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import defaultImage from '../../assets/images/default.png';
 import { galleryRef, photosState } from '../../atoms';
 import { dateParse } from '../../utils/date';
 
@@ -233,7 +232,10 @@ const FileUploadForm = () => {
           </Button>
         </Form>
         <PreviewImage>
-          <img src={image.src ? image.src : defaultImage} alt='' />
+          <img
+            src={image.src ? image.src : '/assets/images/default.png'}
+            alt=''
+          />
         </PreviewImage>
       </Wrapper>
     </Container>

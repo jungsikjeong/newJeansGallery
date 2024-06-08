@@ -47,7 +47,7 @@ const VideoSection = styled.section`
   position: relative;
   width: 100vw;
   height: 100vh;
-
+  z-index: 1;
   video {
     filter: brightness(70%);
     object-fit: cover;
@@ -230,7 +230,7 @@ const Article = styled.article`
 `;
 
 const Home = () => {
-  const [screen, setScreen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // 새로고침시 스크롤 최상단이동
@@ -239,13 +239,12 @@ const Home = () => {
     };
 
     setTimeout(() => {
-      setScreen(true);
+      setLoading(true);
     }, 3000);
   }, []);
 
   return (
     <Container>
-      {/* '/' 경로에서만 뜨는 초기 스크린 */}
       <InitialScreen />
 
       <VideoSection>
@@ -267,7 +266,8 @@ const Home = () => {
           <strong>New Jeans</strong>
         </MainLogo>
       </VideoSection>
-      {screen && (
+
+      {loading && (
         <>
           <Header />
 

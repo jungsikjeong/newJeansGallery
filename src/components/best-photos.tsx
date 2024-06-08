@@ -16,33 +16,34 @@ const Wrapper = styled.div`
   margin: 0 auto;
   text-align: center;
 
-  .title {
-    font-size: 2rem;
-    margin-bottom: 2.25rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-
-    span {
-      border-bottom: 1px solid tomato;
-    }
-
-    @media (min-width: 768px) {
-      font-size: 3.125rem;
-    }
-  }
-
-  .contents {
-    color: #7b8084;
-    font-size: 1.115rem;
-  }
-
   @media (min-width: 768px) {
     height: 100vh;
     margin-top: 35rem;
   }
+
   @media (max-width: 768px) {
-    margin-top: 8rem;
+    margin-top: 265rem;
   }
+`;
+
+const Title = styled.h1`
+  font-size: 2rem;
+  margin-bottom: 2.25rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+
+  span {
+    border-bottom: 1px solid tomato;
+  }
+
+  @media (min-width: 768px) {
+    font-size: 3.125rem;
+  }
+`;
+
+const Contents = styled.p`
+  color: #7b8084;
+  font-size: 1.115rem;
 `;
 
 const Photos = styled.ul`
@@ -57,11 +58,12 @@ const Photos = styled.ul`
 `;
 
 const Photo = styled.li`
+  width: 45%;
+  margin: 0.5rem;
+
   @media (min-width: 768px) {
     width: 100%;
   }
-  width: 45%;
-  margin: 0.5rem;
 
   img {
     @media (max-width: 768px) {
@@ -75,6 +77,7 @@ const Photo = styled.li`
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     transition: all 250ms;
     cursor: pointer;
+
     :hover {
       transform: scale(1.1);
     }
@@ -117,12 +120,12 @@ const BestPhotos = () => {
       )}
       <CustomAnimation>
         <Wrapper>
-          <h1 className='title'>
+          <Title>
             <span>인기사진</span>
-          </h1>
-          <p className='contents'>
+          </Title>
+          <Contents>
             GALLERIA 이용자들에게 많은 인기를 받고있는 사진을 둘러보세요.
-          </p>
+          </Contents>
           <Photos>
             {images.map((photo) => (
               <Photo key={photo.id} onClick={() => onImageClick(photo)}>

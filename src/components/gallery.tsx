@@ -21,52 +21,51 @@ const Container = styled.section`
 
 const Wrapper = styled.div`
   z-index: 100;
-  @media (min-width: 768px) {
-    padding-top: 6.25rem;
-    overflow: hidden;
-    width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
-      url('https://res.heraldm.com/content/image/2022/09/08/20220908000164_0.jpg');
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-  }
+  /* @media (min-width: 768px) { */
+  padding-top: 6.25rem;
+  overflow: hidden;
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
+    url('https://res.heraldm.com/content/image/2022/09/08/20220908000164_0.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  /* } */
 `;
 
 const Slogan = styled.div`
-  .title {
-    font-size: 3.5rem;
-  }
-
-  @media (min-width: 768px) {
-    color: white;
-    .title {
-      font-size: 4rem;
-    }
-  }
-
+  color: white;
   transition: all 0.3s ease-out;
-  color: #2b2d42;
   border-radius: 1.25rem;
   position: absolute;
   z-index: 10;
   left: 1.25rem;
   padding: 1.25rem;
   line-height: 1.2;
-  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.6);
   font-weight: lighter;
+
+  .title {
+    font-size: 4rem;
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.6);
+  }
+
+  @media (max-width: 768px) {
+    .title {
+      font-size: 3.5rem;
+    }
+  }
 `;
 
 const List = styled.ul`
-  @media (min-width: 768px) {
-    width: 4000px;
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: stretch;
-    flex-wrap: nowrap;
-  }
+  /* @media (min-width: 768px) { */
+  width: 4000px;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  /* } */
 `;
 
 const DummyItem = styled.li<{ display: string }>`
@@ -83,35 +82,15 @@ const DummyItem = styled.li<{ display: string }>`
 `;
 
 const Item = styled.li`
-  @media (max-width: 767px) {
-    :nth-child(even) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
-      flex-wrap: nowrap;
-    }
+  :nth-child(odd) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+    flex-wrap: nowrap;
 
-    :nth-child(odd) {
-      img {
-        position: relative;
-        height: 12.5rem;
-        bottom: 0.625rem;
-      }
-    }
-  }
-
-  @media (min-width: 768px) {
-    :nth-child(odd) {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: flex-end;
-      flex-wrap: nowrap;
-
-      img {
-        transform: translateY(-25vh);
-      }
+    img {
+      transform: translateY(-25vh);
     }
 
     /* &:nth-child(2) {
@@ -137,6 +116,7 @@ const Item = styled.li`
     max-width: 100%;
     border-radius: 0.625rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+
     cursor: pointer;
 
     @media (min-width: 768px) {
@@ -207,9 +187,9 @@ const Gallery = () => {
         }
 
         if (
-          viewWidth >= 768 &&
+          // viewWidth >= 768 &&
           scrollLocation >= galleryPosition &&
-          scrollLocation < galleryPosition + 4000
+          scrollLocation < galleryPosition + 4800
         ) {
           wrapRef.current.style.position = 'fixed';
           wrapRef.current.style.top = '0';

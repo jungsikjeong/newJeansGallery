@@ -38,7 +38,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const VoiceBox = styled.div`
+const Box = styled.div`
   padding: 1.25rem;
   width: 100%;
   display: flex;
@@ -47,26 +47,25 @@ const VoiceBox = styled.div`
   }
 `;
 
-const VoiceContent = styled.div`
+const Content = styled.div`
   margin-right: 1rem;
   position: relative;
+  word-break: keep-all;
 
   p {
     @media (max-width: 768px) {
       flex: 0;
-      font-size: 1.25rem;
     }
     @media (min-width: 768px) {
       margin-top: 3.75rem;
       font-size: 1.5625rem;
-      word-break: keep-all;
     }
     opacity: 0.8;
     line-height: 1.4;
     font-weight: 700;
   }
 
-  .voice-member {
+  .content-member {
     @media (min-width: 768px) {
       position: absolute;
       bottom: 0;
@@ -74,12 +73,12 @@ const VoiceContent = styled.div`
     }
     margin-top: 1rem;
 
-    .voice-name {
+    .content-name {
       font-weight: 400;
-      border-top: 1px solid tomato;
+      border-bottom: 1px solid tomato;
     }
 
-    .voice-detail {
+    .content-detail {
       display: block;
       opacity: 0.8;
       margin: 0.625rem 0;
@@ -87,7 +86,7 @@ const VoiceContent = styled.div`
   }
 `;
 
-const VoiceImgBox = styled.div`
+const ImgBox = styled.div`
   @media (max-width: 767px) {
     height: 350px;
     margin-top: 1rem;
@@ -141,25 +140,25 @@ const CustomerVoice = () => {
           </h1>
         </CustomAnimation>
 
-        <VoiceBox>
-          <VoiceContent>
+        <Box>
+          <Content>
             <p>
               GALLERIA를 통해서 제가 애정하는 뉴진스 사진을 다른 사람들과 공유할
               수 있어서 좋아요. 또, 다른 버니즈들은 어떤 뉴진스 사진을
               가지고있는지 볼 수 있어서 좋아요.
             </p>
-            <div className='voice-member'>
-              <span className='voice-name'>정중식</span>
+            <div className='content-member'>
+              <span className='content-name'>정중식</span>
               <br />
-              <span className='voice-detail'>GALLERIA 멤버</span>
+              <span className='content-detail'>GALLERIA 멤버</span>
             </div>
-          </VoiceContent>
+          </Content>
 
-          <VoiceImgBox>
+          <ImgBox>
             <div />
             <img src='/assets/images/customer-voice-user.jpg' alt='' />
-          </VoiceImgBox>
-        </VoiceBox>
+          </ImgBox>
+        </Box>
       </Wrapper>
     </Container>
   );
