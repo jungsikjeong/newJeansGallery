@@ -194,6 +194,7 @@ const Gallery = () => {
         textRef.current
       ) {
         let viewWidth = window.innerWidth;
+        let maxScrollPosition = viewWidth >= 768 ? 4000 : 4800;
         let galleryPosition = containRef.current.offsetTop;
         let scrollLocation = document.documentElement.scrollTop;
 
@@ -206,8 +207,7 @@ const Gallery = () => {
         if (
           // viewWidth >= 768 &&
           scrollLocation >= galleryPosition &&
-          scrollLocation < galleryPosition + 4800
-          // scrollLocation < galleryPosition + 4000 // 원본
+          scrollLocation < galleryPosition + maxScrollPosition
         ) {
           wrapRef.current.style.position = 'fixed';
           wrapRef.current.style.top = '0';
