@@ -36,11 +36,6 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     padding-top: 6.25rem;
     overflow: hidden;
-
-    position: fixed;
-    display: block;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)),
