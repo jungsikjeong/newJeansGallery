@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import styled, { keyframes } from 'styled-components';
 
-import introGIF from '../assets/images/인트로GIF.gif';
 import CustomAnimation from '../style/CustomAnimation';
 
 import InitialScreen from '../components/Initial-screen';
@@ -287,7 +286,7 @@ const Home = () => {
               </CustomAnimation>
 
               <div>
-                <img src={introGIF} alt='' />
+                <img src='/assets/images/인트로GIF.gif' alt='' />
               </div>
             </Wrapper>
           </Section>
