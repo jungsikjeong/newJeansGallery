@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { galleryRef, modalState, photosState } from '../atoms';
+import { galleryRef, modalState } from '../atoms';
+import useFetchPhotos from '../hooks/use-fetch-photos';
 import CustomAnimation from '../style/custom-animation';
 import BestPhotosModal from './photos-modal';
 
@@ -125,6 +126,7 @@ const Item = styled.li`
 
   img {
     max-width: 100%;
+    height: auto;
     border-radius: 0.625rem;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 
@@ -156,11 +158,11 @@ const Gallery = () => {
 
   const [targetImageInfo, setTargetImageInfo] = useState<IImageTypes>();
 
-  const photos = useRecoilValue(photosState);
   const modal = useRecoilValue(modalState);
   const setModal = useSetRecoilState(modalState);
-  const setContainRef = useSetRecoilState(galleryRef);
-  const setPhotos = useSetRecoilState(photosState);
+  const setContainRef = useSetRecoilState(galleryRef); // 이미지 저장후 해당 위치로 이동하기위해서 필요함
+
+  const { posts, error } = useFetchPhotos();
 
   const onImageClick = (photo: any) => {
     setTargetImageInfo(photo);
@@ -170,12 +172,6 @@ const Gallery = () => {
   useEffect(() => {
     if (containRef) {
       setContainRef(containRef);
-    }
-
-    if (localStorage.getItem('data')) {
-      const localDates = JSON.parse(localStorage.getItem('data') as any);
-
-      setPhotos((oldPhotos) => [...localDates, ...oldPhotos]);
     }
   }, []);
 
@@ -274,7 +270,7 @@ const Gallery = () => {
           <DummyItem display='none' />
           <DummyItem display='none' />
 
-          {photos.map((photo, index) => (
+          {posts?.map((photo, index) => (
             <Item key={index} onClick={() => onImageClick(photo)}>
               <img src={photo.src} alt='' />
             </Item>

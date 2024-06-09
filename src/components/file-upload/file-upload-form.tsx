@@ -3,6 +3,7 @@ import uuid from 'react-uuid';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { galleryRef, photosState } from '../../atoms';
+import useAddPhoto from '../../hooks/use-add-photo';
 import { dateParse } from '../../utils/date';
 
 const Container = styled.div`
@@ -136,7 +137,9 @@ const FileUploadForm = () => {
   const galleryContainer = useRecoilValue(galleryRef);
   const setPhotos = useSetRecoilState(photosState);
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { mutate: addPhoto, isLoading } = useAddPhoto();
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (title && textBody && title !== '' && textBody !== '' && image) {
@@ -147,12 +150,10 @@ const FileUploadForm = () => {
         src: image.src,
         date: String(dateParse()),
       };
-      const localDates = JSON.parse(localStorage.getItem('data') as any);
-      localDates
-        ? localStorage.setItem('data', JSON.stringify([body, ...localDates]))
-        : localStorage.setItem('data', JSON.stringify([body]));
 
-      setPhotos((oldPhotos) => [body, ...oldPhotos]);
+      addPhoto(body);
+
+      // setPhotos((oldPhotos) => [body, ...oldPhotos]);
 
       setTitle('');
       setTextBody('');
