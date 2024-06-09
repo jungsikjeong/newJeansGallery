@@ -18,7 +18,7 @@ export async function getAllPhotos(): Promise<IPhoto[]> {
   const db = await initDB();
   const photos = await db.getAll(STORE_NAME);
 
-  return photos.reverse();
+  return photos;
 }
 
 export async function addPhoto(photo: IPhoto) {

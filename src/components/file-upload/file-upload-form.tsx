@@ -138,7 +138,7 @@ const FileUploadForm = () => {
   const galleryContainer = useRecoilValue(galleryRef);
   const setPhotos = useSetRecoilState(photosState);
 
-  const { mutate: addPhoto, isLoading } = useAddPhoto();
+  const { mutate: addPhoto, isPending } = useAddPhoto();
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

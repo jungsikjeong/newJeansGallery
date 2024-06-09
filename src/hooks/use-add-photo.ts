@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addPhoto } from '../utils/db';
 
 const useAddPhoto = () => {
@@ -11,8 +11,7 @@ const useAddPhoto = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({
         queryKey: ['photos'],
-        refetchActive: true,
-        refetchInactive: true,
+        refetchType: 'all',
       });
     },
     onError: (error: any) => {

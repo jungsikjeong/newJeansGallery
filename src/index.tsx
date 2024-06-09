@@ -1,5 +1,7 @@
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
@@ -15,7 +17,11 @@ root.render(
   <RecoilRoot>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <App />
+        <ReactQueryDevtools initialIsOpen />
+
+        <Suspense fallback={<div>로딩중..</div>}>
+          <App />
+        </Suspense>
       </ThemeProvider>
     </QueryClientProvider>
   </RecoilRoot>
