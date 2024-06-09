@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
+import { Fade } from 'react-awesome-reveal';
 import CustomAnimation from '../style/custom-animation';
 
 import InitialScreen from '../components/Initial-screen';
@@ -13,6 +14,7 @@ import Footer from '../components/footer';
 import Gallery from '../components/gallery';
 import Header from '../components/header';
 import NewAuthor from '../components/new-author';
+import VideoSection from '../components/video-section';
 
 const moveUp = keyframes`
 0%{
@@ -39,35 +41,6 @@ const Container = styled.div`
 
   .moveUp {
     animation: ${moveUp} 2s 0s ease-in-out forwards;
-  }
-`;
-
-const VideoSection = styled.section`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  z-index: 1;
-  video {
-    filter: brightness(70%);
-    object-fit: cover;
-  }
-`;
-
-const MainLogo = styled.div`
-  position: absolute;
-  right: 50px;
-  bottom: 50px;
-  font-size: 3rem;
-  line-height: 1.2;
-  color: #f5f6fa;
-  opacity: 0;
-  transform: translateY(0);
-  animation: ${moveUp} 2s 3.7s ease-in-out forwards;
-
-  @media (max-width: 768px) {
-    top: 50%;
-    left: 10%;
-    font-size: 1.5rem;
   }
 `;
 
@@ -246,25 +219,7 @@ const Home = () => {
     <Container>
       <InitialScreen />
 
-      <VideoSection>
-        <video
-          src='/assets/videos/main.mp4'
-          autoPlay
-          muted
-          playsInline
-          width='100%'
-          height='100%'
-          loop
-        ></video>
-
-        <MainLogo>
-          매일 찾게되고
-          <br />
-          언제 입어도 질리지않는
-          <br />
-          <strong>New Jeans</strong>
-        </MainLogo>
-      </VideoSection>
+      <VideoSection />
 
       {loading && (
         <>
@@ -284,9 +239,11 @@ const Home = () => {
                 </div>
               </CustomAnimation>
 
-              <div>
-                <img src='/assets/images/인트로GIF.gif' alt='' />
-              </div>
+              <Fade>
+                <div>
+                  <img src='/assets/images/인트로GIF.gif' alt='' />
+                </div>
+              </Fade>
             </Wrapper>
           </Section>
 

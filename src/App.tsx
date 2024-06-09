@@ -1,5 +1,8 @@
+import { useRecoilState } from 'recoil';
 import { createGlobalStyle } from 'styled-components';
 import Router from './Router';
+import { modalState } from './atoms';
+import PhotosModal from './components/photos-modal';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -64,9 +67,12 @@ a{
 `;
 
 const App = () => {
+  const [modal, setModal] = useRecoilState(modalState);
+
   return (
     <>
       <GlobalStyle />
+      {modal && <PhotosModal />}
       <Router />
     </>
   );

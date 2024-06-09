@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import { IoMdClose } from 'react-icons/io';
 import { Link } from 'react-scroll';
+import styled from 'styled-components';
 
 const Container = styled.nav<{ isMenu: boolean }>`
   position: fixed;
@@ -65,32 +65,32 @@ const SideMenu = ({ isMenu, onMenuClick }: IMenuProps) => {
 
       <List>
         <Item>
-          <Link to='1' spy={true} smooth={true}>
+          <Link to='1' spy={true} smooth={true} onClick={onMenuClick}>
             <span>NewJeans 소개</span>
           </Link>
         </Item>
         <Item>
-          <Link to='2' spy={true} smooth={true}>
+          <Link to='2' spy={true} smooth={true} onClick={onMenuClick}>
             <span>새소식</span>
           </Link>
         </Item>
         <Item>
-          <Link to='3' spy={true} smooth={true}>
+          <Link to='3' spy={true} smooth={true} onClick={onMenuClick}>
             <span>갤러리 둘러보기</span>
           </Link>
         </Item>
         <Item>
-          <Link to='4' spy={true} smooth={true}>
+          <Link to='4' spy={true} smooth={true} onClick={onMenuClick}>
             <span>인기 앨범</span>
           </Link>
         </Item>
         <Item>
-          <Link to='5' spy={true} smooth={true}>
+          <Link to='5' spy={true} smooth={true} onClick={onMenuClick}>
             <span>사진 올리기</span>
           </Link>
         </Item>
         <Item>
-          <Link to='6' spy={true} smooth={true}>
+          <Link to='6' spy={true} smooth={true} onClick={onMenuClick}>
             <span>Customer Voice</span>
           </Link>
         </Item>

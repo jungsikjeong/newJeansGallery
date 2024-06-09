@@ -1,6 +1,6 @@
+import { useRef } from 'react';
 import { atom } from 'recoil';
 import { photos } from './data/photos';
-import { useRef } from 'react';
 
 interface PhotosType {
   id: string;
@@ -10,9 +10,9 @@ interface PhotosType {
   date: string;
 }
 
-export const modalState = atom({
+export const modalState = atom<PhotosType | undefined>({
   key: 'modal',
-  default: false,
+  default: undefined,
 });
 
 export const photosState = atom<PhotosType[]>({

@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useEffect, useRef } from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { galleryRef, modalState } from '../atoms';
 import useFetchPhotos from '../hooks/use-fetch-photos';
 import CustomAnimation from '../style/custom-animation';
-import BestPhotosModal from './photos-modal';
+import { IPhoto } from './models/photo';
 
 const Container = styled.section`
   margin-top: 2rem;
@@ -142,31 +142,19 @@ const Item = styled.li`
   }
 `;
 
-interface IImageTypes {
-  id: string;
-  src: string;
-  date: string;
-  title: string;
-  contents: string;
-}
-
 const Gallery = () => {
   const containRef = useRef<HTMLDivElement>(null);
   const wrapRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<any>(null);
 
-  const [targetImageInfo, setTargetImageInfo] = useState<IImageTypes>();
-
-  const modal = useRecoilValue(modalState);
-  const setModal = useSetRecoilState(modalState);
+  const [modal, setModalStatus] = useRecoilState(modalState);
   const setContainRef = useSetRecoilState(galleryRef); // 이미지 저장후 해당 위치로 이동하기위해서 필요함
 
   const { posts, isLoading } = useFetchPhotos();
 
-  const onImageClick = (photo: any) => {
-    setTargetImageInfo(photo);
-    setModal(true);
+  const onImageClick = (photo: IPhoto) => {
+    setModalStatus(photo);
   };
 
   useEffect(() => {
@@ -238,12 +226,6 @@ const Gallery = () => {
 
   return (
     <Container ref={containRef} id='3'>
-      {modal && (
-        <BestPhotosModal
-          image={targetImageInfo}
-          setTargetImageInfo={setTargetImageInfo}
-        />
-      )}
       <Wrapper ref={wrapRef}>
         <Slogan ref={textRef}>
           <CustomAnimation>

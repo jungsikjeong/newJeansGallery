@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { createPortal } from 'react-dom';
+import { useRecoilState } from 'recoil';
 import styled, { css, keyframes } from 'styled-components';
 import { modalState } from '../atoms';
 
@@ -151,61 +152,48 @@ const Button = styled.button`
   }
 `;
 
-interface IPropsTypes {
-  image?: {
-    id: string;
-    src: string;
-    date: string;
-    title: string;
-    contents: string;
-  };
-  setTargetImageInfo: any;
-  setClickedFromBestPhotos?: any;
-}
-
-const PhotosModal = ({
-  image,
-  setTargetImageInfo,
-  setClickedFromBestPhotos,
-}: IPropsTypes) => {
+const PhotosModal = () => {
   const [visible, setVisible] = useState<boolean>(false);
 
-  const modal = useRecoilValue(modalState);
-  const setModal = useSetRecoilState(modalState);
+  const [modal, setModal] = useRecoilState(modalState);
+
+  const $portal_root = document.getElementById('root-portal');
 
   const onModalClose = () => {
     setVisible(false);
 
     setTimeout(() => {
-      setModal(false);
-      if (setClickedFromBestPhotos) {
-        // BestPhotos.tsx에서 이미지를 클릭하고, 닫기눌렀을때 그 이미지를 잘 닫아주게함
-        setClickedFromBestPhotos(false);
-      }
-      setTargetImageInfo('');
+      setModal(undefined);
     }, 600);
   };
 
   useEffect(() => {
-    setVisible(modal);
+    setVisible(!!modal);
   }, [modal]);
 
   return (
-    <Container>
-      {image && (
-        <Wrapper visible={visible}>
-          <Button onClick={onModalClose}>X</Button>
-          <ImageWrap>
-            <img src={image.src} alt='' />
-          </ImageWrap>
-          <TextWrap>
-            <span className='date'>{image.date}</span>
-            <h1 className='title'>{image.title}</h1>
-            <p className='contents'>{image.contents}</p>
-          </TextWrap>
-        </Wrapper>
-      )}
-    </Container>
+    <>
+      {$portal_root &&
+        modal &&
+        createPortal(
+          <Container>
+            {modal && (
+              <Wrapper visible={visible}>
+                <Button onClick={onModalClose}>X</Button>
+                <ImageWrap>
+                  <img src={modal?.src} alt='' />
+                </ImageWrap>
+                <TextWrap>
+                  <span className='date'>{modal?.date}</span>
+                  <h1 className='title'>{modal?.title}</h1>
+                  <p className='contents'>{modal?.contents}</p>
+                </TextWrap>
+              </Wrapper>
+            )}
+          </Container>,
+          $portal_root
+        )}
+    </>
   );
 };
 
