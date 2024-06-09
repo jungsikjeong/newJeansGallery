@@ -1,9 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BsInstagram } from 'react-icons/bs';
 import { AiOutlineGithub } from 'react-icons/ai';
+import { BsInstagram } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Container = styled.section`
   @media (min-width: 768px) {
@@ -11,7 +10,7 @@ const Container = styled.section`
     height: 25rem;
   }
   background-color: #000;
-  color: rgba(255, 255, 255, 0.8);
+  color: ${({ theme }) => theme.dullGray};
   padding: 1rem 2.5rem;
 `;
 
@@ -23,8 +22,6 @@ const Wrapper = styled.div`
   }
 
   h1 {
-    @media (min-width: 768px) {
-    }
     font-size: 1.525rem;
     padding: 2rem 0;
   }

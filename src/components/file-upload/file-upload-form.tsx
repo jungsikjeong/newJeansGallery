@@ -110,7 +110,8 @@ const PreviewImage = styled.div`
   @media (max-width: 768px) {
     display: none;
   }
-  aspect-ratio: auto 1;
+
+  aspect-ratio: auto 640/480;
 
   img {
     max-width: 100%;

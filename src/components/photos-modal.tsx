@@ -35,9 +35,6 @@ const fadeOut = keyframes`
 `;
 
 const Container = styled.div`
-  @media (max-width: 768px) {
-    overflow-y: scroll;
-  }
   width: 100%;
   height: 100%;
   position: fixed;
@@ -45,6 +42,7 @@ const Container = styled.div`
   left: 0;
   z-index: 1000;
   padding: 2.5rem;
+
   background-color: rgba(0, 0, 0, 0.8);
   animation: ${unfoldIn} 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 `;
@@ -119,16 +117,13 @@ const ImageWrap = styled.div`
   width: 100%;
   text-align: center;
   order: -1;
+  aspect-ratio: auto 1/1;
 
   img {
-    max-width: 100%;
     width: 100%;
     height: 100%;
-    /* width: 600px; */
-    height: auto;
-    max-height: 500px;
     border-radius: 1.25rem;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   @media (min-width: 768px) {

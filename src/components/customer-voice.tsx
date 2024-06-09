@@ -102,14 +102,14 @@ const ImgBox = styled.div`
     @media (max-width: 767px) {
       transform: scale(0.8) translate(10%, 5%) rotate(-30deg);
       border-radius: 300px 300px 170px 280px/260px 360px 170px 300px;
-      background-color: #ef233c;
+      background-color: ${({ theme }) => theme.tomatoColor};
     }
 
     min-width: 100%;
     width: 110%;
     height: 110%;
     margin: 20px auto;
-    background-color: #ef233c;
+    background-color: ${({ theme }) => theme.tomatoColor};
     border-radius: 160px 170px 170px 100px/160px 160px 170px 100px;
     transform: rotate(20deg);
   }
@@ -152,7 +152,7 @@ const CustomerVoice = () => {
             <UserWrap>
               <span className='name'>정중식</span>
               <br />
-              <span className='detail'>GALLERIA 멤버</span>
+              <span className='detail'>GALLERIA 창립자</span>
             </UserWrap>
           </Content>
 
