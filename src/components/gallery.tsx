@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { galleryRef, modalState, photosState } from '../atoms';
+import { galleryRef, modalState } from '../atoms';
 import useFetchPhotos from '../hooks/use-fetch-photos';
 import CustomAnimation from '../style/custom-animation';
-import { IPhoto } from './models/photo';
 import BestPhotosModal from './photos-modal';
 
 const Container = styled.section`
@@ -159,8 +158,6 @@ const Gallery = () => {
 
   const [targetImageInfo, setTargetImageInfo] = useState<IImageTypes>();
 
-  const [photos, setPhotos] = useRecoilState(photosState);
-
   const modal = useRecoilValue(modalState);
   const setModal = useSetRecoilState(modalState);
   const setContainRef = useSetRecoilState(galleryRef); // 이미지 저장후 해당 위치로 이동하기위해서 필요함
@@ -171,26 +168,6 @@ const Gallery = () => {
     setTargetImageInfo(photo);
     setModal(true);
   };
-
-  useEffect(() => {
-    // 새롭게 추가한 이미지 + 기존 정적인 이미지
-    if (!isLoading && posts?.length !== 0) {
-      // 이미 사진에 있는 게시물을 필터링함
-      // 이렇게 안해주면 리액트 쿼리로 작성한 게시글 추가 hook에서 게시글 불러오는 hook의 key 값을 초기화시켜서
-      // 게시글을 중복해서 가져와버림 (참고로 게시글 불러오는 hook도 리액트 쿼리임)
-      const newPosts = posts?.filter(
-        (post) => !photos.some((photo) => photo.id === post.id)
-      );
-
-      let updatedPhotos = [...(newPosts as IPhoto[]), ...photos];
-
-      if (updatedPhotos.length > 10) {
-        updatedPhotos = updatedPhotos.slice(0, 10);
-      }
-      console.log(posts);
-      setPhotos(updatedPhotos);
-    }
-  }, [isLoading, posts]);
 
   useEffect(() => {
     if (containRef) {
@@ -293,7 +270,7 @@ const Gallery = () => {
           <DummyItem display='none' />
           <DummyItem display='none' />
 
-          {photos?.map((photo, index) => (
+          {posts?.map((photo, index) => (
             <Item key={index} onClick={() => onImageClick(photo)}>
               <img src={photo.src} alt='' />
             </Item>
