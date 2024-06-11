@@ -22,7 +22,7 @@ const Wrapper = styled.section`
   z-index: 1;
 
   video {
-    /* filter: brightness(100%); */
+    filter: brightness(80%);
     object-fit: cover;
   }
 `;
@@ -39,7 +39,8 @@ const MainLogo = styled.div`
   animation: ${moveUp} 2s 3.7s ease-in-out forwards;
 
   @media (max-width: 768px) {
-    top: 50%;
+    /* top: 50%; */
+
     left: 10%;
     font-size: 1.5rem;
   }

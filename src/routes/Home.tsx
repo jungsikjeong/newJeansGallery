@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-import { Fade } from 'react-awesome-reveal';
 import CustomAnimation from '../style/custom-animation';
 
 import InitialScreen from '../components/Initial-screen';
 import BestPhotos from '../components/best-photos';
+import Carousel from '../components/common/carousel';
+import CarouselInfinite from '../components/common/carousel-infinite';
 import MoveUpButton from '../components/common/move-up-button';
 import Section from '../components/common/section';
 import CustomerVoice from '../components/customer-voice';
@@ -15,6 +16,7 @@ import Gallery from '../components/gallery';
 import Header from '../components/header';
 import NewAuthor from '../components/new-author';
 import VideoSection from '../components/video-section';
+import { photos } from '../data/photos';
 
 const moveUp = keyframes`
 0%{
@@ -30,7 +32,6 @@ const moveUp = keyframes`
   transform: translateY(0);
 }
 `;
-
 const Container = styled.div`
   position: relative;
   overflow: hidden;
@@ -46,9 +47,12 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-start;
+    display: inherit;
+    /* flex-wrap: wrap; */
+    /* flex-direction: column;
+    align-items: flex-start; */
   }
+
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
@@ -69,14 +73,13 @@ const Wrapper = styled.div`
   }
 
   .title {
-    margin-top: 2rem;
-    font-weight: bold;
-    font-size: 2rem;
-    font-size: 3rem;
     @media (min-width: 768px) {
       margin-top: 0;
       font-size: 3.75rem;
     }
+    margin-top: 2rem;
+    font-weight: bold;
+    font-size: 3rem;
   }
 
   .text {
@@ -165,7 +168,6 @@ const NewsItem = styled.li`
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-
   margin-top: 1rem;
   border-radius: 0.625rem;
 
@@ -239,12 +241,10 @@ const Home = () => {
                 </div>
               </CustomAnimation>
 
-              <Fade>
-                <div>
-                  <img src='/assets/images/인트로GIF.gif' alt='' />
-                </div>
-              </Fade>
+              <Carousel />
             </Wrapper>
+
+            <CarouselInfinite images={photos} />
           </Section>
 
           <Section backgroundColor={''} id='2'>
