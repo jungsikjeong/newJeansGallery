@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { AiOutlineGithub } from 'react-icons/ai';
 import { BsInstagram } from 'react-icons/bs';
+import { IoLogoYoutube } from 'react-icons/io5';
 import { MdOutlineMailOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
@@ -96,6 +96,8 @@ const SLink = styled(Link)`
 `;
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <Container>
       <Wrapper>
@@ -112,7 +114,7 @@ const Footer = () => {
 
         <IconWrapper>
           <SLink
-            to={`${process.env.REACT_APP_PUBLIC_INSTAGRAM}`}
+            to={'https://www.instagram.com/newjeans_official/'}
             target='_blank'
             title='인스타 바로가기'
           >
@@ -122,12 +124,12 @@ const Footer = () => {
           </SLink>
 
           <SLink
-            to={`${process.env.REACT_APP_PUBLIC_GITHUB}`}
+            to={'https://www.youtube.com/@NewJeans_official'}
             target='_blank'
-            title='깃허브 바로가기'
+            title='유튜브 바로가기'
           >
             <Icon>
-              <AiOutlineGithub />
+              <IoLogoYoutube />
             </Icon>
           </SLink>
 
@@ -138,7 +140,7 @@ const Footer = () => {
           </SLink>
         </IconWrapper>
 
-        <Copyright>Copyright © 2024 by Galleria, Inc.</Copyright>
+        <Copyright>Copyright © {currentYear} by Galleria, Inc.</Copyright>
       </Wrapper>
     </Container>
   );
