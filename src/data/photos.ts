@@ -37,7 +37,7 @@ export const photos = [
   },
   {
     id: '5',
-    src: '/assets/images/단체사진04.jpg',
+    src: '/assets/images/단체사진04.avif',
     title: '단체사진',
     contents: `뉴진스. 새로운 청바지, 새로운 유전자`,
     date: '2023-04-06',
