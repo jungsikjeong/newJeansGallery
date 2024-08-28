@@ -12,22 +12,24 @@
 
 # 주요 기능 및 기여
 
+<br/>
 
 ## 애니메이션 및 전체 구현화면
-
+<br/>
 
 ![이미지](public/assets/images/test1.gif)
 
 react-awesome-reveal 라이브러리를 사용해 애니메이션 효과를 추가하여 UX를 개선했습니다.
 시맨틱한 HTML 태그를 적극 활용하여 SEO와 접근성을 개선했습니다.
 
-
+<br/>
 
 ![이미지](public/assets/images/test2.gif)
 
 로컬 스토리지를 활용한 게시글 작성 기능을 구현했습니다.
 
 
+<br/>
 
 
 # 끝으로..
