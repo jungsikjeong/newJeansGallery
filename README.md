@@ -12,7 +12,9 @@
 
 # 주요 기능 및 기여
 <br/>
+
 ## 애니메이션 및 전체 구현화면
+
 <br/>
 
 ![이미지](public/assets/images/test1.gif)
